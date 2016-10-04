@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.6/slick.css"/>
+            <link rel="stylesheet" href="css/style.css" media="screen" />
+
+    <style>
+        .imgLibraries {
+            text-align: center;
+        }
+        .container {
+            width: 100%;
+            margin:1em auto;
+        }
+        .slick-prev:before, .slick-next:before  {
+            /*color: gray ! important;*/
+            font-size: 60px;
+        }
+        .imgLibraries a{
+            display: inline;
+        }
+a.close {
+    font-size: 20px;
+    font-family: arial,sans-serif;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    text-decoration: none;
+    z-index: 22;
+}
+.popupInner{
+  background: #444;
+  position: relative;
+  /*top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 100%;*/
+  }
+.slick-slider{
+    padding: 20px;
+    box-sizing: content-box;
+}
+.slick-next{
+    right: 34%;
+}
+.slick-prev{
+    left: 20px;
+}
+
+
+.free-wall {
+                margin: 15px;
+            }
+            .brick img {
+                margin: 0;
+                display: block;
+            }
+
+    </style>
+</head>
+<body>
+<div class="container">
+<form class="mainSearch" method="GET" action="/ImageGallery/search.html">
+                <div class="search">
+                    <input type="submit" value="">
+                    <input id="searchBox" type="text" class="searchBox" name="s" placeholder="SEARCH">
+                </div>
+            </form>
+            <div class="tab">
+                <ul class="tabset">
+                    <li class=""><a href="javascript:void(0)">Most recent</a></li>
+                    <li class="active"><a href="javascript:void(0)">Most viewed</a></li>
+                </ul>
+             </div>  
+<div class="imgLibraries">
+    <!-- <a href="#">Img 1</a>
+    <a href="#">Img 2</a>
+    <a href="#">Img 3</a>
+    <a href="#">Img 4</a>
+    <a href="#">Img 5</a>
+    <a href="#">Img 6</a>
+    <a href="#">Img 7</a>
+    <a href="#">Img 8</a>
+    <a href="#">Img 9</a>
+    <a href="#">Img 10</a> -->
+
+</div>
+<div class="popup">
+    <div class="popupInner">
+        <a href="#" class="close">X</a>
+
+    <div class="slideshow">
+        <!-- <div><img src="http://lorempixel.com/400/200/nature/IMAGE-01/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-02/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-03/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-04/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-05/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-06/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-07/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-08/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-09/"></div>
+        <div><img src="http://lorempixel.com/400/200/nature/IMAGE-10/"></div> -->
+    </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.6/slick.min.js"/></script>
+    <script type="text/javascript" src="http://vnjs.net/www/project/freewall/freewall.js"></script>
+
+        <script src="js/main.js"></script>
+
+<script type="text/javascript">
+
+function getUrlVars()
+        {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                // vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        console.log(getUrlVars());
+        App.searchPage(getUrlVars().s);
+
+
+
+$(document).ready(function(){
+    var xyz = function(){ 
+    $(".slideshow").slick({
+        // dots: true
+    });
+    $(".imgLibraries .imgContainer").click(function(e){
+        // console.log(e);
+        // console.log(slideIndex);
+        $('.popup').show();
+        // var wHeight =$( window ).height();
+        $('.slick-slide img').css('max-height', $( window ).height()-40);
+        e.preventDefault();
+        slideIndex = $(this).index();
+        $( '.slideshow' ).slickGoTo( parseInt(slideIndex) );
+    });
+
+    $(function() {
+      var wall = new Freewall(".imgLibraries");
+      wall.reset({
+                selector: '.brick',
+                animate: true,
+                cellW: 50,
+                cellH: 'auto',
+                onResize: function() {
+                    wall.fitWidth();
+                }
+            });
+
+            var images = wall.container.find('.brick');
+                wall.fitWidth();
+
+
+
+      // wall.fitWidth();
+            });
+
+   
+
+
+                             }
+        setTimeout(xyz, 2000);
+
+        $('.close').click(function(){
+            $('.popup').hide();
+        });
+
+});
+</script>
+
+
+</body>
+</html>

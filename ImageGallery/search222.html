@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ScoopWhoop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no" />
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+		<link rel="stylesheet" href="css/style.css" media="screen" />
+	</head>
+	<body>
+		<div class="wrapper">
+		<div class="container">
+			<form class="mainSearch" method="GET" action="/search.html">
+				<div class="search">
+					<input type="submit" value="">
+					<input id="searchBox" type="text" class="searchBox" name="s" placeholder="SEARCH">
+				</div>
+			</form>
+			<div class="tab">
+				<ul class="tabset">
+			        <li class=""><a href="javascript:void(0)">Most recent</a></li>
+			        <li class="active"><a href="javascript:void(0)">Most viewed</a></li>
+			    </ul>
+			 </div>  
+			 <div id="mySlider1">
+			  
+			</div>
+			 <div class="imgLibraries">
+			 	<!-- <div class="imgContainer">
+			 		<img src="http://s3.scoopwhoop.com/anj/buf/686705659.jpg">
+			 	</div>
+			 	<div class="imgContainer">
+			 		<img src="http://s3.scoopwhoop.com/anj/buf/686705659.jpg">
+			 	</div>
+			 	<div class="imgContainer">
+			 		<img src="http://s3.scoopwhoop.com/anj/buf/686705659.jpg">
+			 	</div>
+			 	<div class="imgContainer">
+			 		<img src="http://s3.scoopwhoop.com/anj/buf/686705659.jpg">
+			 	</div>
+			 	<div class="imgContainer">
+			 		<img src="http://s3.scoopwhoop.com/anj/buf/686705659.jpg">
+			 	</div> -->
+			 	
+			 </div> 
+		</div>
+		</div>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+		<script type="text/javascript" src="js/slick.min.js"></script>		
+		<script src="js/main.js"></script>
+<script type="text/javascript">
+	function getUrlVars()
+		{
+		    var vars = [], hash;
+		    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		    for(var i = 0; i < hashes.length; i++)
+		    {
+		        hash = hashes[i].split('=');
+		        // vars.push(hash[0]);
+		        vars[hash[0]] = hash[1];
+		    }
+		    return vars;
+		}
+		console.log(getUrlVars());
+			App.searchPage(getUrlVars().s);
+
+
+	
+	$(document).ready(function(){
+	setTimeout(function(){ 
+		console.log('kkkk');
+ 		// $('#mySlider1').slick();
+
+ 		$("#mySlider1").slick({
+        dots: true
+    });
+    $(".imgLibraries .imgContainer").click(function(e){
+        e.preventDefault();
+        // console.log(e);
+        // console.log($(this).index());
+        slideIndex = $(this).index();
+        $( '#mySlider1' ).slickGoTo(parseInt(slideIndex) );
+    });
+
+
+		 }, 5000);
+
+	// var abc = function(currentSlide){
+	// 	$('#mySlider1').on('afterChange', function (event, slick, currentSlide) {
+ //                if (currentSlide === 0) {
+ //                    console.log('First element');
+ //                    $(this).eq(currentSlide).addClass('first-slide-is-active');
+ //                } else {
+ //                    $(this).eq(currentSlide).removeClass('first-slide-is-active');
+ //                }
+ //            });
+	// }
+
+
+});
+</script>
+	</body>
+</html>
